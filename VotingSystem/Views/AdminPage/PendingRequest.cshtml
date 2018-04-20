@@ -1,0 +1,51 @@
+﻿@model IEnumerable<VotingSystem.Models.Candidate>
+
+@{
+    ViewBag.Title = "PendingRequest";
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<h2>Pending Request</h2>
+
+@if (ViewBag.Message != null)
+{
+    <h4 style="color:blue;">@ViewBag.Message</h4>
+}
+
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateInstitutionNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateLastName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateInstitutionNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateLastName)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "PendingDetails", new { id = item.CandidateId })
+                </td>
+            </tr>
+        }
+    </table>
+}
+

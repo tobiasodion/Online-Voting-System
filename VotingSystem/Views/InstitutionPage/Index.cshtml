@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InstitutionPageLayout.cshtml";
+}
+
+<div class="jumbotron"> 
+    
+    <h1>Welcome, @ViewBag.Message</h1>
+    <img style="display: block; margin-left: auto; margin-right: auto" src="@Url.Content("~/Images/index.jpg")" class="img-rounded" alt="iVote" width="304" height="180" />
+    <p></p>
+    <div style="font-size:xx-large; text-align: center; margin-left: auto; margin-right: auto;"> <p class="lead">Welcome to iVote online Voting facility. Click on the Link Below to Start an Election</p></div> 
+    <p><div style="font-size:xx-large; text-align: center; margin-left: auto; margin-right: auto;">@Html.ActionLink("Start Election", "RegisterAdmin", "InstitutionPage")</div></p>
+</div>

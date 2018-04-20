@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "UploadMemberList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Member</h2>
+
+<hr />
+@using (Html.BeginForm("UploadMemberList", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
+{
+        <div class="form-group">
+
+            <div class="control-label col-md-2">Excel:</div>
+            <div class="col-md-10">
+                <input type="file" id="FileUpload" name="FileUpload" class="" />
+            </div>
+        </div>
+
+        <br>
+       
+         <div style="margin-top:10px;"class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" id="btnSubmit" class="btn btn-primary" />
+
+            </div>
+        </div>
+}
+
+

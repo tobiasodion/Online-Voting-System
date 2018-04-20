@@ -1,0 +1,31 @@
+﻿@model IEnumerable<VotingSystem.Models.Position>
+
+@{
+    ViewBag.Title = "ViewCandidate";
+    Layout = "~/Views/Shared/_VoterPageLayout.cshtml";
+}
+
+<h2>Candidate</h2>
+
+<ul class="nav nav-tabs">
+    @foreach (var item in Model)
+    {
+        <li class="nav-item ">
+            @Ajax.ActionLink(
+    item.PositionName,
+    "DisplayCandidate",
+    new { id = item.PositionName },
+    new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, HttpMethod = "get" },
+    new { @class = "btn btn-default" }) 
+        </li> 
+    }
+  
+</ul>
+
+<p></p>
+
+<div id="result"><h2>Meet the Candidates!</h2></div>
+    
+
+
+

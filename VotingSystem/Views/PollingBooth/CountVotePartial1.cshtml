@@ -1,0 +1,8 @@
+﻿@if (ViewBag.Message3 != null)
+{
+    <div style="color:blue">@ViewBag.Message3</div>
+}
+
+<div>
+    @Html.ActionLink("Submit Ballot", "Vote", "PollingBooth", new { @class = "btn btn-primary" })
+</div>

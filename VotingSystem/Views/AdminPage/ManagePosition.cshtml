@@ -1,0 +1,50 @@
+﻿@model IEnumerable<VotingSystem.Models.Position>
+
+@{
+    ViewBag.Title = "Manage Position";
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Add New Position", "RegisterPosition")
+</p>
+
+<h2>Manage Position</h2>
+
+@if (ViewBag.Message != null)
+{
+    <h3 style = color:blue;>@ViewBag.Message</h3>
+}
+
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PositionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PositionGender)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PositionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PositionGender)
+                </td>
+                <td>
+                    @Html.ActionLink("Remove", "RemovePosition", new { id = item.PositionId })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+

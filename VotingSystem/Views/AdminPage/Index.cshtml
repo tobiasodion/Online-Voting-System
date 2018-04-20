@@ -1,0 +1,58 @@
+﻿@model IEnumerable<VotingSystem.Models.Election>
+
+@{
+    ViewBag.Title = "AdminPage";
+    Layout =  "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    @if (ViewBag.message2 != null)
+    {
+        <div class="-col -md -10" style="color:blue;">@ViewBag.message2</div>
+    }
+    <div> 
+        <h2>Welcome Admin</h2>
+    </div>
+   
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ElectionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElectionStartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElectionEndTime)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ElectionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ElectionStartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ElectionEndTime)
+                </td>
+                <td>
+                    @Html.ActionLink("Change Election Time", "EditTime", new { id = item.ElectionId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<VotingSystem.Models.Position>
+
+@{
+    ViewBag.Title = "ViewCandidateVote";
+    Layout = "~/Views/Shared/_VoterPageLayout.cshtml";
+}
+
+
+<h2>Vote Candidates</h2>
+
+<ul class="nav nav-tabs">
+    @foreach (var item in Model)
+    {
+        <li class="nav-item ">
+            @Ajax.ActionLink(
+    item.PositionName,
+    "VoteForm",
+    new { id = item.PositionName },
+    new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, HttpMethod = "get" },
+    new { @class = "btn btn-default" })
+        </li>
+    }
+
+</ul>
+
+<p></p>
+
+<div id="result"><h2>Vote for your Candidates! Ensure you Select a Candidate in all Position</h2></div>
+
+

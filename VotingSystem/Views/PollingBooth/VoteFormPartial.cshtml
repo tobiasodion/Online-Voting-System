@@ -1,0 +1,49 @@
+﻿@model IEnumerable<VotingSystem.Models.Candidate>
+
+@if (ViewBag.Message != null)
+{
+    <h2>@ViewBag.Message</h2>
+}
+
+else
+{
+ <div id="result1"></div>
+
+ foreach (var item in Model)
+    {
+        <div style="border-radius: 20px; background-color:gainsboro; float:left; margin-left:10px; margin-top:20px; height: 270px; width: 170px;border: thick;padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;">
+            <div>
+                @{
+                    var photo = item.CandidatePhoto;
+                    var base64 = Convert.ToBase64String(photo);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                }
+                <img src="@imgSrc" alt="avatar" class="img-circle" height="100" width="100" />
+            </div>
+            <p></p>
+            <div style="font-weight:bold;">
+                @item.CandidateFirstName  @item.CandidateLastName
+                @item.CandidateInstitutionNo
+            </div>
+
+            <div style="word-wrap: break-word;">
+                @item.CandidateManifesto
+            </div>
+
+            <div>
+                @Ajax.ActionLink(
+                "Vote",
+                "CountVote",
+              new { id = item.CandidateId },
+              new AjaxOptions { UpdateTargetId = "result1", InsertionMode = InsertionMode.Replace, HttpMethod = "post" },
+             new { @class = "btn btn-default" })
+            </div>
+
+        </div>
+
+        <p></p> 
+   }
+}
+
+
+

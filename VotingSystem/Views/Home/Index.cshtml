@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    @if (ViewBag.Message != null)
+    {
+            <div class="-col -md -10" style="color:blue;">@ViewBag.Message</div>
+    }
+    <img style="display: block; margin-left: auto; margin-right: auto"src="@Url.Content("~/Images/index.jpg")" class="img-rounded" alt="iVote" width="304" height="180" />
+    <h1>iVote</h1>
+    <p class="lead">Welcome to iVote online Voting facility. iVote Provides a Secure and Convenient Platform for conducting Elections.</p>
+    <p>
+<div style="font-size:large; text-align: center; margin-left: auto; margin-right: auto;">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div>
+                <a href="/Home/DownloadExcel/"><img src="~/Images/excel.ico" width="25" height="25" title="Download Excel format" alt="excel" />Download and Fill Excel File Before Registration</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+    </p>
+    <p><div style="font-size:xx-large; text-align: center; margin-left: auto; margin-right: auto;">@Html.ActionLink("Register Institution", "RegisterInstitution", "Home")</div></p>
+</div>

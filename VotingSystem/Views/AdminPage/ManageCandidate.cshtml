@@ -1,0 +1,56 @@
+﻿@model IEnumerable<VotingSystem.Models.Candidate>
+
+@{
+    ViewBag.Title = "ManageCandidate";
+    Layout = "~/Views/Shared/_AdminPageLayout.cshtml";
+}
+
+<h2>Manage Candidate</h2>
+
+@if (ViewBag.Message != null)
+{
+    <h3 style=color:blue;>@ViewBag.Message</h3>
+}
+
+else
+{
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateInstitutionNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CandidateLastName)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateInstitutionNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CandidateLastName)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Details", "ApprovedDetails", new { id = item.CandidateId })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
